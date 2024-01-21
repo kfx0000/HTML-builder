@@ -12,7 +12,7 @@ fs.readdir(srcPath, { withFileTypes: true }, (err, files) => {
     files.forEach((file) => {
         if (file.isFile()) {
             const filePath = path.join(srcPath, file.name);
-            if(path.extname(filePath) === '.css') {
+            if (path.extname(filePath) === '.css') {
                 const streamToRead = fs.createReadStream(filePath);
                 streamToRead.on('data', (data) => streamBundle.write(data));      
             }

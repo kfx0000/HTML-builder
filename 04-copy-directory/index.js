@@ -8,5 +8,5 @@ const dirDst = path.join(__dirname, dst);
 fs.mkdir(dirDst, { recursive: true }, () => {});
 fs.readdir(dirSrc, (err, files) => {
     if (err) console.log(err.message); else
-    files.forEach((file) => fs.copyFile(path.join(dirSrc, file), `${dirDst}/${file}`, () => {}));
+    files.forEach((file) => fs.copyFile(path.join(dirSrc, file), path.join(dirDst, file), () => {}));
 });
