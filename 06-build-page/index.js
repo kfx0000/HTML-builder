@@ -9,7 +9,11 @@ const stylesDir = path.join(__dirname, 'styles');
 const indexPath = path.join(distDir, 'index.html');
 const stylePath = path.join(distDir, 'style.css');
 
+fs.mkdir(distDir, { recursive: true }, () => {});
+copyDir(srcAssetsDir, distAssetsDir);
+
 function copyDir(src, dst) {
+    fs.mkdir(dst, { recursive: true }, () => {});
     fs.readdir(src, { withFileTypes: true }, (err, files) => {
         if (err) console.log(err.message); else
         files.forEach((file) => {
@@ -23,10 +27,6 @@ function copyDir(src, dst) {
         });
     });
 }
-
-fs.mkdir(distDir, { recursive: true }, () => {});
-fs.mkdir(distAssetsDir, { recursive: true }, () => {});
-copyDir(srcAssetsDir, distAssetsDir);
 
 const streamTemplate = fs.createReadStream(templatePath, 'utf-8');
 streamTemplate.on('data', (data) => {
