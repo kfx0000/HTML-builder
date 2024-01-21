@@ -1,3 +1,0 @@
-This is a test!
-Creating the file text.txt
-And appending some text lines
